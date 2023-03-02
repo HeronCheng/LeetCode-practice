@@ -18,6 +18,8 @@ Return the minimum number of minutes needed to pick up all the garbage.
  * @param {number[]} travel
  * @return {number}
  */
+
+// answer 1
 var garbageCollection = function(garbage, travel) {
     let [metal, paper, glass] = [0, 0, 0];
     let [metalIndex, paperIndex, glassIndex] = [0, 0, 0];
@@ -54,5 +56,35 @@ var garbageCollection = function(garbage, travel) {
         }
     }
 
+    return metal + paper + glass;
+};
+
+// ------------------------------------------------------------------------------
+// answer 2
+var garbageCollection = function(garbage, travel) {
+    let [metal, paper, glass] = [0, 0, 0];
+    let [metalIndex, paperIndex, glassIndex] = [0, 0, 0];
+    for (let i = garbage.length - 1; i >= 0; i--) {
+        metalIndex = metalIndex === 0 && garbage[i].includes("M") ? i : metalIndex
+        paperIndex = paperIndex === 0 && garbage[i].includes("P") ? i : paperIndex
+        glassIndex = glassIndex === 0 && garbage[i].includes("G") ? i : glassIndex
+    }
+    for (let i = 0; i < garbage.length; i++) {
+        let metalCountArr = garbage[i].match(/M/g);
+        let paperCountArr = garbage[i].match(/P/g);
+        let glassCountArr = garbage[i].match(/G/g);
+        if (i <= metalIndex && metalCountArr !== null) {
+            metal += metalCountArr.length;
+        }
+        if (i <= paperIndex && paperCountArr !== null) {
+            paper += paperCountArr.length;
+        }
+        if (i <= glassIndex && glassCountArr !== null) {
+            glass += glassCountArr.length;
+        }
+        metal = i < metalIndex ? metal + travel[i] : metal;
+        paper = i < paperIndex ? paper + travel[i] : paper;
+        glass = i < glassIndex ? glass + travel[i] : glass;
+    }
     return metal + paper + glass;
 };
