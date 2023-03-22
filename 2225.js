@@ -19,6 +19,8 @@ The testcases will be generated such that no two matches will have the same outc
  * @param {number[][]} matches
  * @return {number[][]}
  */
+
+// 本次提交結果 timeout
 var findWinners = function(matches) {
     let allPlayers = matches.join().split(",")
     allPlayers = [...new Set(allPlayers)];
@@ -44,4 +46,32 @@ var findWinners = function(matches) {
     }
     return [champion, secondPlace]
 };
-// 本次提交結果 timeout，須再研究如何改寫
+
+// 有通過，但耗時仍久
+var findWinners = function(matches) {
+    let allPlayers = matches.join().split(",")
+    allPlayers = [...new Set(allPlayers)];
+
+    const len = (Math.max(...allPlayers)) + 1;
+    const count = Array.from({length:len},() => ([0,0]))
+    matches.forEach((match) => {
+        count[match[0]][0]+=1;
+        count[match[1]][1]+=1;
+    })
+
+    const champion = count.reduce((acc, curr, index) => {
+        if (curr[1] === 0 && index !== 0 && curr[0] !== 0 ) {
+            acc.push(index);
+        }
+        return acc;
+        }, []
+    );
+    const secondPlace = count.reduce((acc, curr, index) => {
+        if (curr[1] === 1) {
+            acc.push(index);
+        }
+        return acc;
+        }, []
+    );
+    return [champion, secondPlace]
+};
