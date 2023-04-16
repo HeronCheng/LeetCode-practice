@@ -31,3 +31,5 @@ var compose = function(functions) {
  * const fn = compose([x => x + 1, x => 2 * x])
  * fn(4) // 9
  */
+
+// 這題看到有人用一個原生的方法叫 Array.prototype.reduceRight() 可以從array的右邊往左邊執行，第一次看到所以特別記錄下來
