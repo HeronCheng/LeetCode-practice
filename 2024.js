@@ -14,6 +14,33 @@ Return the maximum number of consecutive 'T's or 'F's in the answer key after pe
  * @param {number} k
  * @return {number}
  */
+// success
+var maxConsecutiveAnswers = function(answerKey, k) {
+    if (answerKey.length === 1) return 1;
+    else {
+        let result = k;
+        let i = 0;
+        let j = k;
+        let string = answerKey.slice(i, j);
+        let tCount = (string.match(/T/g) || []).length;
+        let fCount = string.length - tCount;
+        while (i < answerKey.length - k && j < answerKey.length + 1 && answerKey.length - i > result) {
+            if (Math.min(tCount, fCount) <= k) {
+                result = Math.max(result, answerKey.slice(i, j).length);
+                j++;
+                if (answerKey.at(j - 1) === "T") tCount++;
+                else fCount++
+            }
+            else {
+                i++;
+                if (answerKey.at(i - 1) === "T") tCount--;
+                else fCount--
+            }            
+        }
+        return result;
+    }
+};
+
 // timeout
 var maxConsecutiveAnswers = function(answerKey, k) {
     const result = [];
