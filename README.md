@@ -1,7 +1,7 @@
 # LeetCode-practice
 Leave some record of practicing LeetCode.
 
-Easy 75 
+Easy 79 
 <br>
 Medium 11 
 <br>
