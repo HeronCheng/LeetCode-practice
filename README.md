@@ -1,9 +1,9 @@
 # LeetCode-practice
 Leave some record of practicing LeetCode.
 
-Easy 82 
+Easy 83 
 <br>
-Medium 12 
+Medium 13 
 <br>
 Hard 0 
  
