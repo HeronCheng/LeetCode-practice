@@ -4,7 +4,7 @@ Leave some record of practicing LeetCode.
 Total 98
 <br>
 <br>
-Easy 85 
+Easy 86 
 <br>
 Medium 13 
 <br>
