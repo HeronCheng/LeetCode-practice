@@ -1,12 +1,12 @@
 # LeetCode-practice
 Leave some record of practicing LeetCode.
 
-Total 111
+Total 113
 <br>
 <br>
-Easy 96 
+Easy 97 
 <br>
-Medium 15 
+Medium 16 
 <br>
 Hard 0 
  
